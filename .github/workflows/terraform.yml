@@ -1,4 +1,4 @@
-name: 'Terraform CI/CD'
+name: 'Terraform'
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform Deploy'
+    name: 'Terraform'
     runs-on: ubuntu-latest
     environment: production
 
@@ -35,6 +35,9 @@ jobs:
 
     - name: Terraform Plan
       run: terraform plan -input=false
+
+    - name: Set Terraform Plan Output
+      run: echo "TF_PLAN_STATUS=success" >> $GITHUB_ENV
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
