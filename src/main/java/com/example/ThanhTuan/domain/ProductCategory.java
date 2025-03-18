@@ -1,8 +1,7 @@
 package com.example.ThanhTuan.domain;
 
-public class OderDetail {
+public class ProductCategory {
     public Long id;
     public Long product_id;
-    public Long quantity;
-    public Double price;
+    public Long category_id;
 }
