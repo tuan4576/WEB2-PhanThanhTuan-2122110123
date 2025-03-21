@@ -3,9 +3,9 @@ package com.example.ThanhTuan.domain;
 import java.time.LocalDateTime;
 
 public class Contact {
-    public int id;
-    public int user_id;
-    public String name;
-    public String content;
-    public LocalDateTime created_at;
+    private int id;
+    private int user_id;
+    private String name;
+    private String content;
+    private LocalDateTime created_at;
 }

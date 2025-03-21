@@ -1,7 +1,7 @@
 package com.example.ThanhTuan.domain;
 
 public class ProductCategory {
-    public Long id;
-    public Long product_id;
-    public Long category_id;
+    private Long id;
+    private Long product_id;
+    private Long category_id;
 }
