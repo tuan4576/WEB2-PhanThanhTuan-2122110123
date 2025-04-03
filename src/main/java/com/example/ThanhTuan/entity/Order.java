@@ -1,12 +1,9 @@
 package com.example.ThanhTuan.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -60,13 +57,19 @@ public class Order {
     @Column(nullable = false)
     private String status; // trạng thái pending, shipped, completed, cancelled
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Payment> payments;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Payment> payments;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderDetail> orderDetails;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
+
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<OrderDetail> orderDetails;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private OrderDetail orderDetail;
+    
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)

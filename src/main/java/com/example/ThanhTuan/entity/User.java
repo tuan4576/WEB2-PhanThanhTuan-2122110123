@@ -50,7 +50,7 @@ public class User {
 
     private String avatar;
 
-    private Integer status;// Trạng thái tài khoản (0: bị khóa, 1: hoạt động,...)
+    private Boolean status;// Trạng thái tài khoản (0: bị khóa, 1: hoạt động,...)
 
     
     @Column(name= "email_verified",nullable=false)

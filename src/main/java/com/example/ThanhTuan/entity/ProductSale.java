@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,12 +31,12 @@ public class ProductSale {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="product_id",nullable = false)
     private Product product;
 
     @Column(nullable=false)
-    private Long priceSale;
+    private Double priceSale;
 
     @Column(nullable=false)
     private LocalDateTime dayBegin;
@@ -45,7 +45,7 @@ public class ProductSale {
     private LocalDateTime dayEnd;
 
     @Column(nullable=false)
-    private Integer status;
+    private Boolean status;
 
 
     @CreationTimestamp

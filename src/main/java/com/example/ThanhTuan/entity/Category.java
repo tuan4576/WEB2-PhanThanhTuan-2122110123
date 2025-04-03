@@ -41,12 +41,12 @@ public class Category {
     private String name;
 
     @Column(nullable=false)
-    private Integer status;
+    private Boolean status;
 
     @ManyToOne 
     @JoinColumn(name="user_id",nullable=false)
     private User user;
-
+    
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductCategory> productCategories;

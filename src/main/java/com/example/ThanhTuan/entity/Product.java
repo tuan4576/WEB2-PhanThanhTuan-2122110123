@@ -18,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -63,7 +64,7 @@ public class Product
     // private String target;
 
     @Column(nullable=false)
-    private Integer status;
+    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
@@ -81,13 +82,18 @@ public class Product
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductSale> productSales;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<ProductSale> productSales;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductRoot> productRoots;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<ProductRoot> productRoots;
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+    private ProductRoot productRoot;
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+    private ProductSale productSale;
     
     @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
