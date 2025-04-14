@@ -99,9 +99,12 @@ public class Product
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductCategory> productCategorys;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<ProductCategory> productCategorys;
+    @ManyToOne
+    @JoinColumn(name="category_id",nullable = false)
+    private Category category;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)

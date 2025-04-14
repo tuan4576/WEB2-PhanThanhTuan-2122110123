@@ -47,9 +47,12 @@ public class Category {
     @JoinColumn(name="user_id",nullable=false)
     private User user;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductCategory> productCategories;
+    @JsonIgnore 
+    @OneToMany(mappedBy = "category", cascade =  CascadeType.ALL,orphanRemoval = true)
+    private List<Product> products;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<ProductCategory> productCategories;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)

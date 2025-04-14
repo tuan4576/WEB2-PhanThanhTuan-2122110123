@@ -95,10 +95,7 @@ public class User {
     @JsonIgnore 
     @OneToMany(mappedBy = "user", cascade =  CascadeType.ALL,orphanRemoval = true)
     private List<Contact> contacts;
-    
-    @JsonIgnore 
-    @OneToMany(mappedBy = "user", cascade =  CascadeType.ALL,orphanRemoval = true)
-    private List<Banner> banners;
+
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)

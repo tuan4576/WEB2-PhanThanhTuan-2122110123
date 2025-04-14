@@ -17,10 +17,13 @@ import lombok.AllArgsConstructor;
 
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    // private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+
 
     @Override
     public User createUser(User user) {
+        // user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
